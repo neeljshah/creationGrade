@@ -1,71 +1,98 @@
-# 🎯 Spatial Efficiency & Revenue-Per-Shot (xP) Optimization
-> **An Advanced Geospatial Analytics Engine transforming raw coordinate data into strategic "Expected Value" (EV) maps using Python, BigQuery, and Spatial Modeling.**
+# 🏀 Spatial Efficiency Engine
+### Part 1 of the Basketball Intelligence Suite
 
-![Python](https://img.shields.io/badge/Analytics-Python_3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![BigQuery](https://img.shields.io/badge/Data_Warehouse-Google_BigQuery-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
-![Pandas](https://img.shields.io/badge/Library-Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Business](https://img.shields.io/badge/Focus-Business_Intelligence-FFD700?style=for-the-badge)
+> **Quantifying shot quality beyond make/miss — mapping where players truly dominate, and where they die.**
 
 ---
 
-## 📖 Executive Summary
-In both professional sports and global retail, **Spatial Efficiency** is the primary driver of ROI. This project analyzes 500,000+ data points of spatial tracking to solve the "Efficiency Gap." By mapping coordinate-based performance, I developed an **Expected Points (xP) Model** that identifies "High-Value Zones" and "Efficiency Deadzones," shifting strategy from high-volume output to **High-Expected-Value (EV) output.**
+## 📸 Dashboard Preview
+
+![Spatial Efficiency Dashboard](demo.gif)
+
+> *Interactive Power BI dashboard — filter by Player, Team, Season Type, and Matchup in real time.*
 
 ---
 
-## 🛠️ Business Analytics Translation
-This project demonstrates the exact same methodology used in **Market Territory & Real Estate Analytics**:
-*   **Court Zones** $\rightarrow$ Sales Territories or Retail Floor Sections.
-*   **Shot Frequency** $\rightarrow$ Customer Traffic / Footfall Density.
-*   **Field Goal %** $\rightarrow$ **Conversion Rate**.
-*   **Points Per Shot (PPS)** $\rightarrow$ **Average Transaction Value (ATV)**.
+## 🔍 What This Project Does
+
+Most basketball analysis stops at "did it go in?" The Spatial Efficiency Engine goes deeper — it maps **where shots are created, how efficiently they're converted, and what shot types drive value** across every player and team in the league.
+
+By combining **FG%, Creation Grade, Shot Type distribution, and a live Shot Chart**, this dashboard gives scouts and coaches an at-a-glance read of any player's offensive profile.
 
 ---
 
-## 🚀 Key Project Phases
+## 📊 Dashboard Breakdown
 
-### 1. Data Ingestion & Geospatial Cleaning 🏗️
-* **The Problem:** Raw API data provides (X, Y) coordinates but lacks context (Distance, Angle, Zone).
-* **Technical Skill:** Data Engineering with `NBA_API`, Coordinate Transformation, and SQL cleaning in **BigQuery**.
-* **The Code:** [🔗 View Ingestion Script](./Scripts/Data_Cleaning.py)
+### Effective Creation Scatter Plot
+- **X-axis:** Creation Grade — a composite score measuring how self-sufficiently a player generates their own shot opportunities
+- **Y-axis:** FG% — how efficiently they convert those opportunities
+- Players in the **top-right quadrant** are the league's elite: high creation *and* high efficiency
+- Filter by matchup (e.g. LAL @ OKC) to isolate game-specific performance
 
-### 2. Efficiency Modeling (Hexbin & Heatmapping) 🗺️
-* **The Problem:** Raw scatter plots are "noisy." How do we visualize where a resource is *truly* effective?
-* **Technical Skill:** Kernel Density Estimation (KDE), Logarithmic Hexbinning, and Matplotlib Court Overlays.
-* **The Result:** Identified the **"Point-of-Diminishing-Returns"** in mid-range shot attempts.
-* **Visual Representation:**
-> ![Shot Chart Placeholder](https://via.placeholder.com/800x400?text=Insert+Hexbin+Shot+Chart+Image+Here)
+### KPI Cards (Left Panel)
+| Metric | Description |
+|---|---|
+| **FG%** | Overall field goal percentage for the selected filter |
+| **Creation Grade** | Composite self-creation score (0–100 scale) |
+| **Avg Shot Distance** | Mean distance (ft) of all shot attempts |
 
-### 3. Expected Value (EV) & Pricing Sensitivity 📊
-* **The Problem:** Is a 40% Three-Point shot better than a 55% Two-Point shot?
-* **Technical Skill:** Comparative **ROI Modeling**, Z-Score Normalization against League Averages.
-* **The Insight:** Modeled the "Mathematical Break-Even Point" to optimize offensive flow and maximize **Revenue-Per-Possession**.
+### Shot Type Bar Chart
+- Side-by-side breakdown of **made vs. missed** attempts by shot category
+- Covers: Jump Shot, Pullup, Step Back, Cutting Layup, Driving Layup, Fadeaway, and more
+- Instantly reveals a player's **shot diet** — are they a pull-up creator or a cutter?
 
-### 4. Zone Performance Benchmarking (SQL) 🚚
-* **The Problem:** Which territories are underperforming the Global Average?
-* **Technical Skill:** SQL Window Functions (`AVG() OVER`), `CASE` statements for Zone Partitioning.
-* **The Code:** [🔗 View BigQuery SQL Logic](./SQL/Zone_Benchmarking.sql)
-
----
-
-## 🛠️ Technical Mastery Checklist
-- [x] **Geospatial Processing:** Using Euclidean distance to calculate shot proximity.
-- [x] **Expected Metrics:** Calculating **eFG%** (Effective Field Goal) and **PPS** (Points Per Shot).
-- [x] **BigQuery Integration:** Standardized 10,000+ rows into partitioned tables for high-speed querying.
-- [x] **Business Storytelling:** Converting "Missed Opportunities" into **Opportunity Cost** ($$).
+### Shot Chart
+- Spatial scatter plot overlaid on a half-court diagram
+- **Green dots** = makes, **Red dots** = misses
+- Density clusters reveal **hot zones** and **efficiency deadzones**
 
 ---
 
-## 📂 Project Structure
-```text
-├── SQL/
-│   ├── Zone_Benchmarking.sql       # Comparison against League Averages
-│   └── Territory_Efficiency.sql    # Conversion rate by court zone
-├── Scripts/
-│   ├── Data_Cleaning.py            # Coordinate normalization
-│   ├── PPS_Analysis.py             # Expected Points Model (ROI)
-│   └── Shot_Chart_Engine.py        # Visual Heatmap generator
-├── Visuals/
-│   ├── Efficiency_Map.png          # Hexbin Visualization
-│   └── ROI_Analysis.png            # Points-per-shot Bar Chart
+## ⚙️ Tech Stack
+
+| Tool | Usage |
+|---|---|
+| **Power BI** | Dashboard design, interactivity, DAX measures |
+| **Python (Pandas, NumPy)** | Data cleaning, feature engineering |
+| **NBA Stats API** | Shot-level play-by-play data source |
+| **DAX** | Creation Grade composite metric logic |
+
+---
+
+## 🧠 Key Insight
+
+> Players like **Shai Gilgeous-Alexander** and **Jalen Williams** sit in the top-right quadrant of the Effective Creation chart — combining a Creation Grade above 60 with 40%+ FG%. This confirms their status as true primary creators, not just volume shooters.
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repo and open the `.pbix` file in Power BI Desktop
+2. Use the **Player Name**, **Team Name**, **Season Type**, and **Matchup** filters to drill into any player or game
+3. The Shot Chart and KPI cards update dynamically with every filter selection
+
+---
+
+## 📁 Repository Structure
+
+```
+Spatial-Efficiency/
+├── data/
+│   └── shot_data_cleaned.csv
+├── notebooks/
+│   └── feature_engineering.ipynb
+├── dashboard/
+│   └── SpatialEfficiency.pbix
 └── README.md
+```
+
+---
+
+## 🔗 Part of the Basketball Intelligence Suite
+
+| Part | Project | Focus |
+|---|---|---|
+| **1** | Spatial Efficiency Engine *(you are here)* | Shot quality & creation mapping |
+| **2** | Momentum Volatility Index | Game-flow & run detection |
+| **3** | Defensive Gravity Model | Off-ball spatial influence |
+| **4** | Behavioral Archetyping | Player segmentation & style |
