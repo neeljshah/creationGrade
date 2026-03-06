@@ -1,0 +1,49 @@
+from nba_api.stats.endpoints import leaguedashlineups
+import pandas as pd
+import time
+from google.colab import files
+
+# Real Team IDs for 2023-24
+teams = {
+    'Lakers': 1610612747,
+    'Warriors': 1610612744,
+    'Celtics': 1610612738,
+    'Nuggets': 1610612743,
+    'Suns': 1610612756
+}
+
+headers = {
+    'Host': 'stats.nba.com',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Referer': 'https://www.nba.com/',
+}
+
+all_real_lineups = []
+
+for name, tid in teams.items():
+    print(f"Fetching real lineups for {name}...")
+    try:
+        # Fetching actual 5-man lineups for this specific team
+        data = leaguedashlineups.LeagueDashLineups(
+            team_id_nullable=tid,
+            season='2023-24',
+            group_quantity=5,
+            measure_type_detailed_defense='Advanced',
+            headers=headers,
+            timeout=60
+        )
+        all_real_lineups.append(data.get_data_frames()[0])
+        time.sleep(2) # Rest to avoid block
+    except Exception as e:
+        print(f"Could not get {name}: {e}")
+
+if all_real_lineups:
+    final_df = pd.concat(all_real_lineups)
+
+    # We only want lineups that actually played significant minutes
+    final_df = final_df[final_df['MIN'] > 15]
+
+    file_name = 'real_nba_lineups_2024.csv'
+    final_df.to_csv(file_name, index=False)
+    files.download(file_name)
+    print("REAL DATA DOWNLOADED!")
