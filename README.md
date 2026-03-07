@@ -11,6 +11,10 @@
 
 > *Interactive Power BI dashboard — filter by Player, Team, Season Type, and Matchup in real time.*
 
+
+https://github.com/user-attachments/assets/02a4f54e-d458-49af-8a87-4b479e6a8852
+
+
 ---
 
 ## 🔍 What This Project Does
