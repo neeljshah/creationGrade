@@ -1,7 +1,7 @@
 # 🏀 Spatial Efficiency Engine
 ### Part 1 of the Basketball Intelligence Suite
 
-> **Quantifying shot quality beyond make/miss — mapping where players truly dominate, and where they die.**
+> **Quantifying shot quality beyond make/miss -- mapping where players truly dominate, and where they die.**
 
 ---
 
@@ -9,7 +9,7 @@
 
 ![Spatial Efficiency Dashboard](demo.gif)
 
-> *Interactive Power BI dashboard — filter by Player, Team, Season Type, and Matchup in real time.*
+> *Interactive Power BI dashboard -- filter by Player, Team, Season Type, and Matchup in real time.*
 
 
 https://github.com/user-attachments/assets/02a4f54e-d458-49af-8a87-4b479e6a8852
@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/02a4f54e-d458-49af-8a87-4b479e6a8852
 
 ## 🔍 What This Project Does
 
-Most basketball analysis stops at "did it go in?" The Spatial Efficiency Engine goes deeper — it maps **where shots are created, how efficiently they're converted, and what shot types drive value** across every player and team in the league.
+Most basketball analysis stops at "did it go in?" The Spatial Efficiency Engine goes deeper -- it maps **where shots are created, how efficiently they're converted, and what shot types drive value** across every player and team in the league.
 
 By combining **FG%, Creation Grade, Shot Type distribution, and a live Shot Chart**, this dashboard gives scouts and coaches an at-a-glance read of any player's offensive profile.
 
@@ -28,8 +28,8 @@ By combining **FG%, Creation Grade, Shot Type distribution, and a live Shot Char
 ## 📊 Dashboard Breakdown
 
 ### Effective Creation Scatter Plot
-- **X-axis:** Creation Grade — a composite score measuring how self-sufficiently a player generates their own shot opportunities
-- **Y-axis:** FG% — how efficiently they convert those opportunities
+- **X-axis:** Creation Grade -- a composite score measuring how self-sufficiently a player generates their own shot opportunities
+- **Y-axis:** FG% -- how efficiently they convert those opportunities
 - Players in the **top-right quadrant** are the league's elite: high creation *and* high efficiency
 - Filter by matchup (e.g. LAL @ OKC) to isolate game-specific performance
 
@@ -43,7 +43,7 @@ By combining **FG%, Creation Grade, Shot Type distribution, and a live Shot Char
 ### Shot Type Bar Chart
 - Side-by-side breakdown of **made vs. missed** attempts by shot category
 - Covers: Jump Shot, Pullup, Step Back, Cutting Layup, Driving Layup, Fadeaway, and more
-- Instantly reveals a player's **shot diet** — are they a pull-up creator or a cutter?
+- Instantly reveals a player's **shot diet** -- are they a pull-up creator or a cutter?
 
 ### Shot Chart
 - Spatial scatter plot overlaid on a half-court diagram
@@ -65,7 +65,7 @@ By combining **FG%, Creation Grade, Shot Type distribution, and a live Shot Char
 
 ## 🧠 Key Insight
 
-> Players like **Shai Gilgeous-Alexander** and **Jalen Williams** sit in the top-right quadrant of the Effective Creation chart — combining a Creation Grade above 60 with 40%+ FG%. This confirms their status as true primary creators, not just volume shooters.
+> Players like **Shai Gilgeous-Alexander** and **Jalen Williams** sit in the top-right quadrant of the Effective Creation chart -- combining a Creation Grade above 60 with 40%+ FG%. This confirms their status as true primary creators, not just volume shooters.
 
 ---
 
